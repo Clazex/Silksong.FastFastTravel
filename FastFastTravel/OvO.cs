@@ -11,7 +11,6 @@ using O_O = FastTravelScenes;
 using @try = HarmonyLib.HarmonyPatch;
 using @catch = HarmonyLib.HarmonyWrapSafe;
 using @finally = HarmonyLib.HarmonyPrefix;
-using OAO = HarmonyLib.HarmonyArgument;
 using OwO = PlayMakerFSM;
 using OoO = HutongGames.PlayMaker.Fsm;
 using OmO = HutongGames.PlayMaker.FsmStateAction;
@@ -23,7 +22,8 @@ namespace FastFastTravel;
 
 partial class FastFastTravelPlugin {
 	[@try(typeof(OwO), nameof(OwO.Start)), @catch, @finally]
-	private static void 〇皿〇([OAO("__instance")] OwO OwO) {
+	private static void 〇皿〇(OwO __instance) {
+		OwO OwO = __instance;
 		if (O_O._scenes.ContainsValue(OwO.GetBaseSceneName())) {
 			if (OwO is {
 				name: "Bone Beast NPC", FsmName: "Interaction"
