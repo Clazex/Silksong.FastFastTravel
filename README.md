@@ -21,7 +21,7 @@ Obtain releases from [GitHub releases](https://github.com/Clazex/Silksong.FastFa
 
 需要 BepInEx 5。
 
-从 [GitHub releases](https://github.com/Clazex/Silksong.FastFastTravel) 或 [Thunderstore](https://thunderstore.io/c/hollow-knight-silksong/p/Clazex/FastFastTravel/) 获取发布包。
+从 [GitHub releases](https://github.com/Clazex/Silksong.FastFastTravel/releases) 或 [Thunderstore](https://thunderstore.io/c/hollow-knight-silksong/p/Clazex/FastFastTravel/) 获取发布包。
 
 ## 功能
 
