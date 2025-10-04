@@ -1,0 +1,26 @@
+# v0.3.0
+
+- Refactor to use the Silksong template
+- Fix Bell Beast location not being saved correctly
+
+# v0.2.0
+
+- Add speeding up unlock animations
+- Add OvO
+
+# v0.1.3
+
+- Update regarding changes in Patch 1.0.28650
+
+# v0.1.2
+
+- Fix HUD not displaying after fast travel
+
+# v0.1.1
+
+- Skips the Bellway travel cutscene entirely instead of instant exit
+- Updates Bell Beast location
+
+# v0.1.0
+
+- Initial version
