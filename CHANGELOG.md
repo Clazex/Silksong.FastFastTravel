@@ -1,3 +1,7 @@
+# v0.3.1
+
+- Fix incorrect argument
+
 # v0.3.0
 
 - Refactor to use the Silksong template
