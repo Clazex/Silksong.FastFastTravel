@@ -140,8 +140,7 @@ partial class FastFastTravelPlugin {
 		fsm.DisableAction("Stop", 1);
 
 		// Fast floor open
-		fsm.DisableAction("Open Floor", 3);
-		fsm.DisableAction("Open Floor", 5);
+		fsm.DisableActions("Open Floor", 3, 5);
 		fsm.GetAction<CallMethodProper>("Open Floor", 0)
 			.gameObject.GameObject.Value
 			.GetComponent<Animator>().speed = 10f;
