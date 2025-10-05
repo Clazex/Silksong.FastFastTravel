@@ -6,6 +6,10 @@ Requires BepInEx 5.
 
 Obtain releases from [GitHub releases](https://github.com/Clazex/Silksong.FastFastTravel/releases) or [Thunderstore](https://thunderstore.io/c/hollow-knight-silksong/p/Clazex/FastFastTravel/).
 
+> The project icon incorporates the [Fast forward fill](https://icons.getbootstrap.com/icons/fast-forward-fill/)
+> icon from Bootstrap Icons under [The MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE),
+> along with assets from the game for illustration purpose, whose copyright is held by Team Cherry.
+
 ## Features
 
 - Skips most of the departure and arrival animations of the Bellway and Ventrica
@@ -24,6 +28,10 @@ Obtain releases from [GitHub releases](https://github.com/Clazex/Silksong.FastFa
 需要 BepInEx 5。
 
 从 [GitHub releases](https://github.com/Clazex/Silksong.FastFastTravel/releases) 或 [Thunderstore](https://thunderstore.io/c/hollow-knight-silksong/p/Clazex/FastFastTravel/) 获取发布包。
+
+> 项目图标包含了 Bootstrap Icons 的 [Fast forward fill](https://icons.getbootstrap.com/icons/fast-forward-fill/)
+> 图标（遵循 [MIT 协议](https://github.com/twbs/bootstrap/blob/main/LICENSE)），
+> 以及用于说明目的的游戏资产，其版权归属于 Team Cherry。
 
 ## 功能
 
