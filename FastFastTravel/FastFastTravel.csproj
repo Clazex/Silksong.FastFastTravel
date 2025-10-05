@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<!--
 		Imports silksong path properties only if present in order to allow CI
 		builds. The file should be gitignored.
@@ -30,7 +30,7 @@
 			also used by various parts of the build system.
 		-->
 		<AssemblyTitle>FastFastTravel</AssemblyTitle>
-		<Version>0.3.1</Version>
+		<Version>0.4.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -61,7 +61,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Thunderstore/**" />
+		<None Include="../*.*">
+			<Link>SolutionFiles/%(FileName)%(Extension)</Link>
+		</None>
+		<None Include="../Thunderstore/**/*.*">
+			<Link>Thunderstore/%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</None>
 	</ItemGroup>
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent" Condition="'$(OutputFolder)' != ''">
