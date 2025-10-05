@@ -22,7 +22,11 @@ public partial class FastFastTravelPlugin : BaseUnityPlugin {
 	private void Awake() {
 		Instance = this;
 		Logger = base.Logger;
+
+		ConfigEntries.Bind(Config);
+		Config.ConfigReloaded += (_, _) => ConfigEntries.Bind(Config);
 		Harmony.CreateAndPatchAll(typeof(FastFastTravelPlugin));
+
 		Logger.LogInfo($"Plugin {Name} ({Id}) v{Version} has loaded!");
 	}
 }

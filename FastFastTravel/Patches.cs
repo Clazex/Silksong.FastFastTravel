@@ -6,6 +6,8 @@ using HarmonyLib;
 
 using HutongGames.PlayMaker.Actions;
 
+using UObject = UnityEngine.Object;
+
 namespace FastFastTravel;
 
 partial class FastFastTravelPlugin {
@@ -45,6 +47,22 @@ partial class FastFastTravelPlugin {
 				FsmName: "Unlock Behaviour"
 			}) {
 				ModifyTubeTollFsm(__instance.Fsm);
+				return;
+			}
+		}
+
+		if (__instance.gameObject.scene.name == nameof(UObject.DontDestroyOnLoad)) {
+			if (__instance is {
+				name: "Hero_Hornet(Clone)",
+				FsmName: "Silk Specials"
+			}) {
+				ModifySilkSpecialsFsm(__instance.Fsm);
+				return;
+			} else if (__instance is {
+				name: "Bone Beast Children Teleport(Clone)",
+				FsmName: "bellbeast_child_teleport_arrive"
+			}) {
+				ModifySummonedChildrenFsm(__instance.Fsm);
 				return;
 			}
 		}
@@ -163,6 +181,48 @@ partial class FastFastTravelPlugin {
 		fsm.DisableAction("Retract Animation", 0);
 		fsm.AddAction("Retract Animation", new ChangeAnimatorSpeed(100f));
 		fsm.DisableAction("After Retract Pause", 1);
+	}
+
+	#endregion
+
+	#region Beastling Call
+
+	private static void ModifySilkSpecialsFsm(Fsm fsm) {
+		Logger.LogDebug("Modifying Hornet Silk Specials FSM");
+
+		fsm.DisableActions("Hornet Jump Antic", 1, 4, 5);
+		fsm.DisableActions("Hornet Jump", 1, 2, 3, 4, 5, 6, 7, 8);
+		fsm.AddTransition("Hornet Jump", FsmEvent.Finished, "Hornet Fall");
+		fsm.DisableActions("Hornet Fall", 0, 3, 5, 6, 7);
+		fsm.AddTransition("Hornet Fall", FsmEvent.Finished, "Children Leave Fade");
+
+		fsm.GetAction<ScreenFader>("Children Leave Fade", 6).duration = 0.25f;
+		fsm.GetAction<Wait>("Children Leave Fade", 7).time = 0.25f;
+
+		ModifyNeedolinFsm(fsm.GetAction<RunFSM>("Needolin Sub", 2).fsmTemplateControl.RunFsm);
+	}
+
+	private static void ModifyNeedolinFsm(Fsm fsm) {
+		Logger.LogDebug("Modifying Hornet Needolin SubFSM");
+
+		fsm.GetAction<BoolTestDelay>("Needolin FT Wait", 4).delay = 0f;
+		fsm.GetAction<Wait>("Can Fast Travel?", 1).time = 0f;
+
+		fsm.GetAction<Wait>("Needolin FT Antic", 5).time = 2f; // 3f -> 2f
+		fsm.AddAction("Needolin FT Antic", new ListenForSkipBeastlingCall(FsmEvent.Finished));
+	}
+
+	private static void ModifySummonedChildrenFsm(Fsm fsm) {
+		Logger.LogDebug("Modifying Summoned Bell Beast Childern FSM");
+
+		fsm.AddAction("Init", new InvokeAction(() => {
+			// Somehow TC decided that Play(clip, 0f) does not reset clip time is clip
+			// is current clip, so do reset them here.
+			MirrorTk2dAnimDelayed mirrorer = fsm.FsmComponent.GetComponent<MirrorTk2dAnimDelayed>();
+			mirrorer.mirrorAnimator.PlayFromFrame(0);
+			mirrorer.animator.PlayFromFrame(0);
+			mirrorer.animator.Stop(); // This will be started by mirrorer later
+		}));
 	}
 
 	#endregion

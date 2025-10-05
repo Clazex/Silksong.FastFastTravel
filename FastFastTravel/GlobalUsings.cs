@@ -4,3 +4,5 @@ global using System.Linq;
 global using HutongGames.PlayMaker;
 
 global using UnityEngine;
+
+global using Plugin = FastFastTravel.FastFastTravelPlugin;

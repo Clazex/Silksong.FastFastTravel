@@ -14,6 +14,8 @@ Obtain releases from [GitHub releases](https://github.com/Clazex/Silksong.FastFa
 - The Bell Beast will no longer fall asleep randomly
 - Skips the Bellway travel cutscene
 - The Bell Beast will not force to sing upon first entrance in range
+- Speeds up the Beastling Call, optionally skipping the performance by pressing designated key. (Configurable, defaults to `Down` binding for keyboard, and left stick button for controller)
+
 
 # 快速快速旅行
 
@@ -31,3 +33,4 @@ Obtain releases from [GitHub releases](https://github.com/Clazex/Silksong.FastFa
 - 钟道兽不会随机沉睡
 - 跳过钟道旅行过场动画
 - 首次进入钟道兽范围时不再强制唱歌
+- 加速唤兽曲，可按下指定键跳过演奏。（可配置，键盘默认为 `下` 键位，手柄默认为按下左摇杆）
