@@ -11,12 +11,12 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
-		<!-- Allow access of private members at runtime. -->
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<AnalysisMode>Recommended</AnalysisMode>
-		<NoWarn>$(NoWarn);MSB3270</NoWarn> <!-- Architecture mismatch warning -->
+		<!-- Allow access of private members at runtime. -->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<!-- Disable architecture mismatch warning -->
+		<NoWarn>$(NoWarn);MSB3270</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration) == 'Release'">
@@ -25,10 +25,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<!--
-			These properties will control the generated plugin info. Version is
-			also used by various parts of the build system.
-		-->
+		<!-- These properties will control the generated plugin info -->
 		<AssemblyTitle>FastFastTravel</AssemblyTitle>
 		<Version>0.4.0</Version>
 	</PropertyGroup>
@@ -52,11 +49,6 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
-
-		<!--
-			If you're unable resolve this dependency, check that you're using
-			the nuget v3 package feed instead of v2.
-		-->
 		<PackageReference Include="Silksong.GameLibs" Version="1.1.0-silksong1.0.28714" />
 	</ItemGroup>
 
@@ -87,7 +79,7 @@
 		</ItemGroup>
 
 		<PropertyGroup>
-			<TempFolder>$(IntermediateOutputPath)/zip</TempFolder>
+			<TempFolder>$(IntermediateOutputPath)/Zip</TempFolder>
 			<PublishFolder>../dist</PublishFolder>
 		</PropertyGroup>
 
@@ -108,7 +100,7 @@
 		</ItemGroup>
 
 		<PropertyGroup>
-			<TempFolder>$(IntermediateOutputPath)/zip-ts</TempFolder>
+			<TempFolder>$(IntermediateOutputPath)/Thunderstore</TempFolder>
 			<PublishFolder>../dist</PublishFolder>
 		</PropertyGroup>
 
