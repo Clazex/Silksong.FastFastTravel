@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<!--
 		Imports silksong path properties only if present in order to allow CI
 		builds. The file should be gitignored.

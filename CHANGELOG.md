@@ -1,3 +1,7 @@
+# v0.4.0
+
+- Add speeding up & skipping Beastling Call
+
 # v0.3.1
 
 - Fix incorrect argument
