@@ -86,7 +86,8 @@ partial class FastFastTravelPlugin {
 		fsm.ChangeTransition("Start State", "SLEEP", "Wake Up");
 
 		// Fast arrival
-		fsm.DisableAction("Travel Arrive Start", 7);
+		// TC made AudioPlayInState (index 6) does block finish so we can't directly disable it here
+		fsm.GetAction<Wait>("Travel Arrive Start", 7).time = 0f;
 
 		// HUD Fix
 		fsm.AddAction("Wait Finished Entering", new InvokeAction(() => {
