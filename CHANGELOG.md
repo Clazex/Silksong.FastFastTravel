@@ -1,3 +1,7 @@
+# v0.4.1
+
+- Fix stuck in Bellway arrival
+
 # v0.4.0
 
 - Add speeding up & skipping Beastling Call
