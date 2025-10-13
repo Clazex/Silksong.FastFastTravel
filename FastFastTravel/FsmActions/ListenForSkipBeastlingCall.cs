@@ -32,9 +32,9 @@ internal sealed class ListenForSkipBeastlingCall : FsmStateAction {
 		private ActionSet() {
 			Plugin.Logger.LogDebug("Creating skip beastling call action set");
 
-			if (ConfigEntries.SkipBeastlingCall.KeyboardBinding.Value is Key key && key != Key.None) {
+			if (ConfigEntries.SkipBeastlingCall.KeyboardBinding.Value is KeyCode code and not KeyCode.None) {
 				keyboard = new("Keyboard Skip Beastling Call", this);
-				keyboard.AddDefaultBinding(key);
+				keyboard.AddDefaultBinding(ConfigEntries.AcceptableKeyCodes.ToKey(code));
 			} else {
 				keyboard = InputHandler.Instance.inputActions.Down;
 			}
