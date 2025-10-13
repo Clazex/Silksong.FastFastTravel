@@ -21,12 +21,19 @@ public partial class FastFastTravelPlugin : BaseUnityPlugin {
 
 	private static Harmony Harmony { get; } = new(Id);
 
+	internal static event Action? ConfigChanged;
+	private static void InvokeConfigChanged(object sender, EventArgs args) {
+		Logger.LogDebug("Config changed");
+		ConfigChanged?.Invoke();
+	}
+
 	private void Awake() {
 		Instance = this;
 		Logger = base.Logger;
 
 		ConfigEntries.Bind(Config);
-		Config.ConfigReloaded += (_, _) => ConfigEntries.Bind(Config);
+		Config.ConfigReloaded += InvokeConfigChanged;
+		Config.SettingChanged += InvokeConfigChanged;
 		Harmony.PatchAll(typeof(Patches));
 
 		Logger.LogInfo($"Plugin {Name} ({Id}) v{Version} has loaded!");

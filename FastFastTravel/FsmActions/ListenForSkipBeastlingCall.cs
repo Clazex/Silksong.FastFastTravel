@@ -2,23 +2,16 @@ using InControl;
 
 namespace FastFastTravel.FsmActions;
 
-internal sealed class ListenForSkipBeastlingCall(FsmEvent skipEvent) : FsmStateAction {
-	private static ActionSet actionSet = new();
+internal sealed class ListenForSkipBeastlingCall : FsmStateAction {
+	public FsmEvent skipEvent;
 
-	private static void UpdateActionSet() => actionSet = new();
-
-	static ListenForSkipBeastlingCall() {
-		ConfigEntries.SkipBeastlingCall.KeyboardBinding.SettingChanged += (_, _) => UpdateActionSet();
-		ConfigEntries.SkipBeastlingCall.ControllerBinding.SettingChanged += (_, _) => UpdateActionSet();
+	public ListenForSkipBeastlingCall(FsmEvent skipEvent) {
+		BlocksFinish = false;
+		this.skipEvent = skipEvent;
 	}
 
-	public FsmEvent skipEvent = skipEvent;
-
-	public override void OnEnter() =>
-		BlocksFinish = false;
-
 	public override void OnUpdate() {
-		if (ConfigEntries.SkipBeastlingCall.Enabled.Value && actionSet.IsPressed) {
+		if (ConfigEntries.SkipBeastlingCall.Enabled.Value && ActionSet.Instance.IsPressed) {
 			Plugin.Logger.LogDebug("Beastling call skip triggered");
 			Fsm.Event(skipEvent);
 			Finish();
@@ -26,12 +19,17 @@ internal sealed class ListenForSkipBeastlingCall(FsmEvent skipEvent) : FsmStateA
 	}
 
 	private sealed class ActionSet : PlayerActionSet {
+		internal static ActionSet Instance { get; private set; } = new();
+
+		static ActionSet() => Plugin.ConfigChanged += () => Instance = new();
+
+
 		internal readonly PlayerAction keyboard;
 		internal readonly PlayerAction controller;
 
 		internal bool IsPressed => keyboard.IsPressed || controller.IsPressed;
 
-		internal ActionSet() {
+		private ActionSet() {
 			Plugin.Logger.LogDebug("Creating skip beastling call action set");
 
 			if (ConfigEntries.SkipBeastlingCall.KeyboardBinding.Value is Key key && key != Key.None) {
