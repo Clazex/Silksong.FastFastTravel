@@ -1,3 +1,7 @@
+# v0.4.2
+
+- Support configuration maanager
+
 # v0.4.1
 
 - Fix stuck in Bellway arrival
