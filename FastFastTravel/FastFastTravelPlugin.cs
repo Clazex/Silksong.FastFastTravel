@@ -19,14 +19,24 @@ public partial class FastFastTravelPlugin : BaseUnityPlugin {
 		private set;
 	}
 
+	private static Harmony Harmony { get; } = new(Id);
+
 	private void Awake() {
 		Instance = this;
 		Logger = base.Logger;
 
 		ConfigEntries.Bind(Config);
 		Config.ConfigReloaded += (_, _) => ConfigEntries.Bind(Config);
-		Harmony.CreateAndPatchAll(typeof(FastFastTravelPlugin));
+		Harmony.PatchAll(typeof(Patches));
 
 		Logger.LogInfo($"Plugin {Name} ({Id}) v{Version} has loaded!");
+	}
+
+	private void OnDestroy() {
+#if !DEBUG
+		Logger.LogWarning("Unload called in release build");
+#endif
+		Harmony.UnpatchSelf();
+		Logger.LogInfo($"Plugin {Name} has unloaded!");
 	}
 }

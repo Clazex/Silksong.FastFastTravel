@@ -10,7 +10,7 @@ using UObject = UnityEngine.Object;
 
 namespace FastFastTravel;
 
-partial class FastFastTravelPlugin {
+internal static partial class Patches {
 	[HarmonyPatch(typeof(PlayMakerFSM), nameof(PlayMakerFSM.Start))]
 	[HarmonyWrapSafe]
 	[HarmonyPostfix]
@@ -71,7 +71,7 @@ partial class FastFastTravelPlugin {
 	#region Bellway
 
 	private static void ModifyBellBeastFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Bell Beast FSM");
+		Plugin.Logger.LogDebug("Modifying Bell Beast FSM");
 
 		// Standby everywhere
 		EnumCompare actionCompareLocation = fsm.GetAction<EnumCompare>("Is Already Present?", 1);
@@ -128,7 +128,7 @@ partial class FastFastTravelPlugin {
 	}
 
 	private static void ModifyBellwayTollFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Bellway Toll FSM");
+		Plugin.Logger.LogDebug("Modifying Bellway Toll FSM");
 
 		// Fast strum
 		fsm.DisableAction("Return Control", 5);
@@ -152,7 +152,7 @@ partial class FastFastTravelPlugin {
 	#region Ventrica
 
 	private static void ModifyTubeFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Tube FSM");
+		Plugin.Logger.LogDebug("Modifying Tube FSM");
 
 		// Fast arrival
 		fsm.DisableAction("Tube Start Away", 3);
@@ -175,7 +175,7 @@ partial class FastFastTravelPlugin {
 	}
 
 	private static void ModifyTubeTollFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Tube Toll FSM");
+		Plugin.Logger.LogDebug("Modifying Tube Toll FSM");
 
 		// Fast unlock
 		fsm.DisableAction("Retract Animation", 0);
@@ -188,7 +188,7 @@ partial class FastFastTravelPlugin {
 	#region Beastling Call
 
 	private static void ModifySilkSpecialsFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Hornet Silk Specials FSM");
+		Plugin.Logger.LogDebug("Modifying Hornet Silk Specials FSM");
 
 		fsm.DisableActions("Hornet Jump Antic", 1, 4, 5);
 		fsm.DisableActions("Hornet Jump", 1, 2, 3, 4, 5, 6, 7, 8);
@@ -203,7 +203,7 @@ partial class FastFastTravelPlugin {
 	}
 
 	private static void ModifyNeedolinFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Hornet Needolin SubFSM");
+		Plugin.Logger.LogDebug("Modifying Hornet Needolin SubFSM");
 
 		fsm.GetAction<BoolTestDelay>("Needolin FT Wait", 4).delay = 0f;
 		fsm.GetAction<Wait>("Can Fast Travel?", 1).time = 0f;
@@ -213,7 +213,7 @@ partial class FastFastTravelPlugin {
 	}
 
 	private static void ModifySummonedChildrenFsm(Fsm fsm) {
-		Logger.LogDebug("Modifying Summoned Bell Beast Childern FSM");
+		Plugin.Logger.LogDebug("Modifying Summoned Bell Beast Childern FSM");
 
 		fsm.AddAction("Init", new InvokeAction(() => {
 			// Somehow TC decided that Play(clip, 0f) does not reset clip time is clip

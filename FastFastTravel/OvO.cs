@@ -20,7 +20,7 @@ using QwQ = HutongGames.PlayMaker.Actions.CreateObject;
 
 namespace FastFastTravel;
 
-partial class FastFastTravelPlugin {
+partial class Patches {
 	[@try(typeof(OwO), nameof(OwO.Start)), @catch, @finally]
 	private static void 〇皿〇(OwO __instance) {
 		OwO OwO = __instance;
@@ -97,7 +97,6 @@ internal sealed class OvO : GwG {
 
 		public override void OnEnter() {
 			base.OnEnter();
-			sitBackAndRelax = 0f;
 			OAO();
 		}
 
