@@ -1,3 +1,10 @@
+# Deprecation
+
+This mod has been deprecated. All features have been merged into [QoL](https://thunderstore.io/c/hollow-knight-silksong/p/Vitaxses/QoL/).
+
+本模组已弃用。所有功能已经合并至 [QoL](https://thunderstore.io/c/hollow-knight-silksong/p/Vitaxses/QoL/)。
+
+
 # Fast Fast Travel
 
 A mod for Hollow Knight: Silksong that skips fast travel animations, and let the Bell Beast be standby everywhere.
