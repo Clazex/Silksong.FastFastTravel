@@ -1,7 +1,7 @@
 {
 	"name": "FastFastTravel",
 	"description": "Skips fast travel animations, and let the Bell Beast be standby everywhere.",
-	"version_number": "0.4.2",
+	"version_number": "0.4.3",
 	"website_url": "https://github.com/Clazex/Silksong.FastFastTravel",
 	"dependencies": [
 		"BepInEx-BepInExPack_Silksong-5.4.2304"

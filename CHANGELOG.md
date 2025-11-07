@@ -1,3 +1,7 @@
+# v0.4.3
+
+- Accommodate to Unity input transition
+
 # v0.4.2
 
 - Support configuration maanager

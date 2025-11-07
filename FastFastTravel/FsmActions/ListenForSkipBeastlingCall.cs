@@ -1,5 +1,7 @@
 using InControl;
 
+using UnityKey = UnityEngine.InputSystem.Key;
+
 namespace FastFastTravel.FsmActions;
 
 internal sealed class ListenForSkipBeastlingCall : FsmStateAction {
@@ -32,7 +34,7 @@ internal sealed class ListenForSkipBeastlingCall : FsmStateAction {
 		private ActionSet() {
 			Plugin.Logger.LogDebug("Creating skip beastling call action set");
 
-			if (ConfigEntries.SkipBeastlingCall.KeyboardBinding.Value is KeyCode code and not KeyCode.None) {
+			if (ConfigEntries.SkipBeastlingCall.KeyboardBinding.Value is UnityKey code and not UnityKey.None) {
 				keyboard = new("Keyboard Skip Beastling Call", this);
 				keyboard.AddDefaultBinding(ConfigEntries.AcceptableKeyCodes.ToKey(code));
 			} else {

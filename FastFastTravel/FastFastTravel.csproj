@@ -27,7 +27,7 @@
 	<PropertyGroup>
 		<!-- These properties will control the generated plugin info -->
 		<AssemblyTitle>FastFastTravel</AssemblyTitle>
-		<Version>0.4.2</Version>
+		<Version>0.4.3</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -50,8 +50,8 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 
-		<PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
-		<PackageReference Include="Silksong.GameLibs" Version="1.1.0-silksong1.0.28714" />
+		<PackageReference Include="UnityEngine.Modules" Version="6000.0.50" PrivateAssets="all" />
+		<PackageReference Include="Silksong.GameLibs" Version="*-*" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup>
